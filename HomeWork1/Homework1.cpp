@@ -8,7 +8,6 @@ using namespace LInkedlist;
 
 int main()
 {
-    
     cout << "Hello World!\n";
     LinkedList *List = new LinkedList();
     //int num = 10;
@@ -26,9 +25,6 @@ int main()
     List->printList();
     List->RemoveNode();
     List->printList();
-    
-
-    
 }
 
 
@@ -82,12 +78,101 @@ int main()
 #include <iostream>
 #include "Stack.h"
 
+using namespace std;
+
+bool myStack::isEmpty()
+{
+    if (top == NULL)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+void myStack::push(int value)
+{
+    Node* ptr = new Node();
+    ptr->data = value;
+    ptr->Next = top;
+    top = ptr;
+    Count++;
+}
+
+void myStack::pop()
+{
+    if (isEmpty())
+    {
+        cout << "Stack is Empty" << endl;
+        Empty = true;
+    }
+    else
+    {
+        Node* ptr = top;
+        top = top->Next;
+        delete(ptr);
+        Count--;
+    }
+}
+bool myStack::isFull()
+{
+    if (Count > MaxSize)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+int myStack::getTopValue()
+{
+    if (isEmpty())
+    {
+        cout << "There is no value! , its NULL" << endl;
+        return NULL;
+    }
+    else
+    {
+        return top->data;
+    }
+}
+
+void myStack::deleteStack()
+{
+    while (!isEmpty())
+    {
+        pop();
+    }
+}
+void myStack::initStack(int size)
+{
+    int value;
+    cout << "please enter a value" << endl;
+    cin >> value;
+    for (int i = 0; i < size; i++)
+    {
+        push(value);
+        cout << "please enter a value" << endl;
+        cin >> value;
+    }
+}
+int myStack::getCount()
+{
+    return Count;
+}
+
 int main()
 {
-    MyStack* s = new MyStack;
-    initStack(s, 3);
-    node* nodee = new node();
-    nodee->info = 5;
-    push(s,*nodee);
-    cout << GetTop(s) << endl;
+    myStack stk = myStack();
+    stk.push(5);
+    cout <<"Top: " << stk.getTopValue() << endl;
+    stk.initStack(6);
+    for (int i = 0; i < stk.getCount(); i++)
+    {
+        cout << stk.getTopValue() << endl;
+        stk.pop();
+    }
 }

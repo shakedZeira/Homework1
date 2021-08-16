@@ -2,7 +2,6 @@
 using namespace std;
 namespace LInkedlist
 {
-
 	struct node
 	{
 		int info;

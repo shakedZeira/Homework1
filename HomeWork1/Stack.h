@@ -1,9 +1,10 @@
+/*
 #pragma once
 #include "LinkedList.h"
 #include <iostream>
 
 using namespace LInkedlist;
-/*
+
 class MyStack
 {
 private:
@@ -25,7 +26,7 @@ public:
 
 	}
 };
-*/
+
 struct MyStack
 {
 	int MaxSize;
@@ -97,5 +98,40 @@ void push(MyStack* S, node element)
 	}
 }
 
+*/
+
+#pragma once
+#include <iostream>
+
+struct Node
+{
+	int data;
+	Node* Next;
+};
+class myStack
+{
+private:
+	int MaxSize;
+	int Count;
+	bool Empty;
+	Node* top;
+
+public:
+	myStack()
+	{
+		top = NULL;
+		Empty = true;
+		Count = 0;
+		MaxSize = 255;
+	}
+	bool isEmpty();
+	bool isFull();
+	void push(int value);
+	int getCount();
+	void pop();
+	int getTopValue();
+	void deleteStack();
+	void initStack(int size);
+};
 
 
