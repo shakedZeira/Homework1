@@ -77,7 +77,7 @@ int main()
 
 #include <iostream>
 #include "Stack.h"
-
+#include "Queue.h"
 using namespace std;
 
 bool myStack::isEmpty()
@@ -164,15 +164,65 @@ int myStack::getCount()
     return Count;
 }
 
-int main()
+void initliazeStack()
 {
     myStack stk = myStack();
     stk.push(5);
-    cout <<"Top: " << stk.getTopValue() << endl;
+    cout << "Top: " << stk.getTopValue() << endl;
     stk.initStack(6);
-    for (int i = 0; i < stk.getCount(); i++)
+    cout << endl;
+    for (int i = 0; i < stk.getCount() + 1; i++)
     {
         cout << stk.getTopValue() << endl;
         stk.pop();
+    }
+}
+
+void initlaizeQueue()
+{
+    Queue q = Queue();
+    q.enqueue(4);
+    q.enqueue(3);
+    q.enqueue(5);
+    cout << "Top : " << q.dequeue() << endl;
+    q.dequeue();
+    cout << "Top : " << q.dequeue() << endl;
+}
+
+int main()
+{
+    initliazeStack();
+    cout << "Q: ///////" << endl;
+    initlaizeQueue();
+}
+
+
+void Queue::enqueue(int value)
+{
+    while (begin.isEmpty() == false)
+    {
+        end.push(begin.getTopValue());
+        begin.pop();
+    }
+    begin.push(value);
+
+    while (!end.isEmpty())
+    {
+        begin.push(end.getTopValue());
+        end.pop();
+    }
+}
+
+int Queue::dequeue()
+{
+    if (begin.isEmpty())
+    {
+        cout << "its empty already!" << endl;
+    }
+    else
+    {
+        int top = begin.getTopValue();
+        begin.pop();
+        return top;
     }
 }

@@ -1,28 +1,18 @@
 #pragma once
 #include <iostream>
-namespace queue
+#include "Stack.h"
+class Queue
 {
-	struct node
+private:
+	myStack begin;
+	myStack end;
+
+public:
+	Queue()
 	{
-		int info;
-		node* next;
-	};
-	class Quque
-	{
-		private:
-			node* head, * tail;
-
-		public:
-			queue()
-			{
-				head = NULL;
-				tail = NULL;
-			}
-			void enqueue()
-			{
-
-			}
-
-
-	};
-}
+		begin;
+		end;
+	}
+	void enqueue(int value);
+	int dequeue();
+};
